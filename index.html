@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineSelect - Deine Filmauswahl</title>
+    <!-- Ausgelagertes CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hauptseite mit Filmauswahl -->
+        <div id="homepage" class="current-page">
+            <div class="header">
+                <h1>🎬 КиноВыбор</h1>
+                <p>Откройте для себя отличные фильмы - Нажмите на фильм, чтобы посмотреть!</p>
+            </div>
+
+            <div class="film-grid">
+                <div class="film-card" onclick="openFilm('https://kinogo-films.fm/895-meg-monstr-glubiny.html')">
+                    <div class="film-poster">🦈</div>
+                    <h3>Мег: Монстр глубины</h3>
+                    <p>Мегалодон возвращается из глубин океана, чтобы терроризировать человечество.</p>
+                    <button class="watch-btn">Смотреть фильм</button>
+                </div>
+
+                <div class="film-card" onclick="openFilm('https://kinogo-films.fm/50-meg-2-bezdna.html')">
+                    <div class="film-poster">🦈🌊</div>
+                    <h3>Мег 2: Бездна</h3>
+                    <p>Джейсон Стэйтем снова сражается с древними морскими хищниками.</p>
+                    <button class="watch-btn">Смотреть фильм</button>
+                </div>
+
+                <div class="film-card" onclick="openFilm('https://kinogo-films.fm/690-matrica-perezagruzka.html')">
+                    <div class="film-poster">💊🔄</div>
+                    <h3>Матрица: Перезагрузка</h3>
+                    <p>Нео продолжает свой путь как Избранный в продолжении культовой саги.</p>
+                    <button class="watch-btn">Смотреть фильм</button>
+                </div>
+
+                <div class="film-card" onclick="openFilm('https://kinogo-films.fm/9835-gromoverzhcy.html')">
+                    <div class="film-poster">⚡</div>
+                    <h3>Громовержцы</h3>
+                    <p>Супергеройский боевик с захватывающими спецэффектами. ⚠️ Пока плохое качество!</p>
+                    <button class="watch-btn">Смотреть фильм</button>
+                </div>
+
+                <div class="film-card" onclick="openFilm('https://kinogo-films.fm/7319-krushenie-mira.html')">
+                    <div class="film-poster">🌍💥</div>
+                    <h3>Крушение мира</h3>
+                    <p>Апокалиптический триллер о конце света. 👍 Может понравиться!</p>
+                    <button class="watch-btn">Смотреть фильм</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filmdetailseiten -->
+        <div id="inception" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>Inception (2010)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">🌀</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            Christopher Nolan
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Sci-Fi, Thriller
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            148 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            2010
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐⭐ (8.8/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>Dom Cobb ist ein Dieb mit einer seltenen Fähigkeit: Er kann in die Träume anderer Menschen eindringen und deren Geheimnisse aus dem Unterbewusstsein stehlen. Diese Gabe hat ihn zu einem begehrten Spieler in der Welt der Unternehmensspionage gemacht, aber sie hat ihn auch zu einem internationalen Flüchtling gemacht und alles gekostet, was er je geliebt hat. Nun bietet sich Cobb die Chance auf Erlösung: Ein letzter Job könnte ihm sein Leben zurückgeben, aber nur wenn er das Unmögliche schaffen kann - Inception.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="matrix" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>The Matrix (1999)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">💊</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            Lana & Lilly Wachowski
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Sci-Fi, Action
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            136 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            1999
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐⭐ (8.7/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>Neo ist ein Computer-Hacker, der von rätselhaften Nachrichten heimgesucht wird, die von einer mysteriösen Figur namens Morpheus stammen. Diese Begegnungen führen Neo in eine Unterwelt, in der er entdeckt, dass die Realität, wie er sie kennt, eine Illusion ist. Die Matrix ist ein Computerprogramm, das die Menschheit in einer simulierten Realität gefangen hält, während Maschinen ihre Körper als Energiequelle nutzen.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="interstellar" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>Interstellar (2014)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">🚀</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            Christopher Nolan
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Sci-Fi, Drama
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            169 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            2014
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐⭐ (8.6/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>In einer nahen Zukunft kämpft die Erde mit extremen Klimaveränderungen und Nahrungsmittelknappheit. Der ehemalige NASA-Pilot Cooper entdeckt eine geheime NASA-Mission und schließt sich einer Gruppe von Forschern an, die durch ein Wurmloch reisen, um neue bewohnbare Planeten für die Menschheit zu finden. Die Mission führt ihn weit von seiner Familie weg, während die Zeit aufgrund relativistischer Effekte unterschiedlich vergeht.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="avatar" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>Avatar (2009)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">🌍</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            James Cameron
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Sci-Fi, Action, Adventure
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            162 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            2009
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐ (7.8/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>Im Jahr 2154 reist Jake Sully, ein gelähmter Ex-Marine, zum Pandora-Mond, um am Avatar-Programm teilzunehmen. Dort übernimmt er die Kontrolle über einen Avatar - einen genetisch veränderten Na'vi-Körper. Als Jake in die Welt der Na'vi eintaucht und sich in Neytiri verliebt, muss er sich zwischen seiner Mission für die Menschen und dem Schutz der Welt entscheiden, die er zu lieben gelernt hat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="joker" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>Joker (2019)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">🃏</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            Todd Phillips
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Drama, Thriller
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            122 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            2019
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐ (8.4/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>Arthur Fleck ist ein gescheiterter Komiker, der in Gotham City lebt und von der Gesellschaft ignoriert und misshandelt wird. Nach einer Reihe von demütigenden Ereignissen beginnt Arthur seinen Abstieg in den Wahnsinn und wird zu dem ikonischen Kriminellen, den wir als Joker kennen. Der Film zeigt eine düstere und realistische Darstellung von Arthurs Transformation und der sozialen Unruhen, die er auslöst.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="avengers" class="hidden">
+            <div class="film-detail">
+                <button class="back-btn" onclick="showHomepage()">← Zurück zur Auswahl</button>
+                <h2>Avengers: Endgame (2019)</h2>
+                <div class="film-info">
+                    <div class="film-poster-large">⚡</div>
+                    <div class="film-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Regie:</span>
+                            Anthony & Joe Russo
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Genre:</span>
+                            Action, Adventure, Sci-Fi
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Laufzeit:</span>
+                            181 Minuten
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Jahr:</span>
+                            2019
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Bewertung:</span>
+                            ⭐⭐⭐⭐⭐ (8.4/10)
+                        </div>
+                    </div>
+                </div>
+                <div class="synopsis">
+                    <h3>Handlung:</h3>
+                    <p>Nach den verheerenden Ereignissen von Infinity War ist das Universum in Trümmern. Mit Hilfe der verbliebenen Verbündeten versammeln sich die Avengers ein letztes Mal, um Thanos' Aktionen rückgängig zu machen und das Gleichgewicht im Universum wiederherzustellen - egal welche Konsequenzen vor ihnen liegen mögen. Dies ist das große Finale einer Geschichte, die über mehr als zwanzig miteinander verbundene Filme erzählt wurde.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ausgelagertes JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
