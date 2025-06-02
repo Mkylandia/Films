@@ -45,7 +45,6 @@ function createAdvancedRipple(event) {
     }, 800);
 }
 
-// Enhanced scroll animations
 document.addEventListener('DOMContentLoaded', function() {
     // Advanced intersection observer for cards
     const observerOptions = {
@@ -197,31 +196,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Add CSS animations dynamically
-const styleSheet = document.createElement('style');
-styleSheet.textContent = `
-    @keyframes advancedRipple {
-        0% {
-            transform: scale(0);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(2);
-            opacity: 0;
-        }
-    }
-
-    .custom-cursor {
-        mix-blend-mode: difference;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-            animation-duration: 0.01ms !important;
-            animation-iteration-count: 1 !important;
-            transition-duration: 0.01ms !important;
-        }
-    }
-`;
-document.head.appendChild(styleSheet);
