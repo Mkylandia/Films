@@ -1,131 +1,190 @@
-// JAVASCRIPT
-function openFilm(url) {
-    // Add click animation
-    const clickedCard = event.currentTarget;
-    clickedCard.style.transform = 'scale(0.98)';
-    
-    setTimeout(() => {
-        clickedCard.style.transform = '';
-        window.open(url, '_blank');
-    }, 100);
-}
-
-// Add smooth scroll behavior
-document.addEventListener('DOMContentLoaded', function() {
-    // Animate cards on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    // --- CARD LOADING ANIMATION ---
+    const filmCards = document.querySelectorAll('.film-card');
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 150); // Staggered animation
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Initially hide cards
-    const filmCards = document.querySelectorAll('.film-card');
-    filmCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    filmCards.forEach(card => {
         observer.observe(card);
     });
 
-    // Add parallax effect to floating elements
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
+    // --- ENHANCED RIPPLE & CLICK ---
+    window.openFilm = function(url) {
+        const clickedCard = event.currentTarget;
         
-        document.querySelectorAll('.floating-element').forEach((element, index) => {
-            const speed = 0.1 + (index * 0.05);
-            element.style.transform = `translateY(${parallax * speed}px)`;
-        });
-    });
+        clickedCard.style.transform = `${getComputedStyle(clickedCard).transform} scale(0.97) rotateX(12deg)`;
+        clickedCard.style.transition = 'transform 0.1s ease-out';
+        
+        createAdvancedRipple(event, clickedCard);
+        
+        setTimeout(() => {
+            // Reset transform to allow hover effects to work again if user cancels navigation
+            clickedCard.style.transform = getComputedStyle(clickedCard).transform.replace(/scale\([0-9.]+\)/, 'scale(1.04)').replace(/rotateX\([0-9.]+deg\)/, 'rotateX(8deg)');
+            // The previous hover state might need to be reapplied or simply rely on the existing hover CSS
+            
+            window.open(url, '_blank');
+        }, 200); // Slightly longer to see ripple
+    }
 
-    // Add mouse tracking effect for cards
+    function createAdvancedRipple(event, card) {
+        const rippleContainer = card.querySelector('.card-shine-layer') || card; // Prefer shine layer
+        const ripple = document.createElement('div');
+        const rect = rippleContainer.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 2; // Larger ripple
+        
+        // Calculate click position relative to the ripple container
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${x - size / 2}px`;
+        ripple.style.top = `${y - size / 2}px`;
+        ripple.classList.add('ripple-effect');
+        
+        rippleContainer.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 1000); // Ripple duration
+    }
+    
+    // Add CSS for ripple-effect dynamically or ensure it's in your CSS file
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(var(--primary-gold-rgb), 0.5) 0%, 
+                rgba(var(--primary-gold-rgb), 0.2) 40%, 
+                transparent 70%);
+            transform: scale(0);
+            animation: rippleUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            pointer-events: none;
+            z-index: 5; /* Ensure it's on top within its container */
+        }
+        @keyframes rippleUp {
+            to {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+    `;
+    document.head.appendChild(styleSheet);
+
+
+    // --- CURSOR LIGHT EFFECT ---
+    const cursorLight = document.getElementById('cursor-light');
+    if (cursorLight) {
+        document.addEventListener('mousemove', (e) => {
+            cursorLight.style.transform = `translate(${e.clientX - cursorLight.offsetWidth / 2}px, ${e.clientY - cursorLight.offsetHeight / 2}px)`;
+        });
+        document.body.addEventListener('mouseleave', () => {
+            cursorLight.style.opacity = '0';
+        });
+        document.body.addEventListener('mouseenter', () => {
+             if (getComputedStyle(cursorLight).opacity == '0') { // Only animate in if it was hidden
+                cursorLight.style.opacity = '1';
+             }
+        });
+    }
+
+    // --- CARD MOUSE INTERACTION (SHINE & GLOW ORB & 3D TILT) ---
     filmCards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
+        const shineLayer = card.querySelector('.card-shine-layer');
+        const glowOrb = card.querySelector('.card-glow-orb');
+
+        card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+            const cardWidth = rect.width;
+            const cardHeight = rect.height;
+
+            // For shine layer's ::before element (using CSS variables)
+            if (shineLayer) {
+                shineLayer.style.setProperty('--mouse-x', `${x}px`);
+                shineLayer.style.setProperty('--mouse-y', `${y}px`);
+            }
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.02)`;
+            // For glow orb (using CSS variables)
+            if (glowOrb) {
+                glowOrb.style.setProperty('--mouse-x-rel', `${(x / cardWidth) * 100}%`);
+                glowOrb.style.setProperty('--mouse-y-rel', `${(y / cardHeight) * 100}%`);
+            }
+
+            // Dynamic Y-axis rotation based on mouse position
+            const rotateYFactor = 15; // Max rotation in degrees
+            const rotateY = ((x - cardWidth / 2) / (cardWidth / 2)) * rotateYFactor * -1; // Invert for natural feel
+            card.style.setProperty('--rotate-y', `${rotateY}deg`);
         });
-        
-        card.addEventListener('mouseleave', function() {
-            card.style.transform = '';
+
+        card.addEventListener('mouseleave', () => {
+            // Reset dynamic Y rotation
+            card.style.setProperty('--rotate-y', `0deg`);
         });
     });
-
-    // Add dynamic title effect
-    const title = document.querySelector('.logo');
-    let titleText = title.textContent;
-    let isAnimating = false;
-
-    title.addEventListener('mouseenter', function() {
-        if (!isAnimating) {
-            isAnimating = true;
-            let scrambleCount = 0;
-            const scrambleInterval = setInterval(() => {
-                if (scrambleCount < 10) {
-                    title.textContent = titleText.split('').map(char => 
-                        Math.random() > 0.7 ? String.fromCharCode(65 + Math.floor(Math.random() * 26)) : char
-                    ).join('');
-                    scrambleCount++;
-                } else {
-                    title.textContent = titleText;
-                    clearInterval(scrambleInterval);
-                    isAnimating = false;
-                }
-            }, 50);
+    
+    // --- STAR RATING FILL ---
+    document.querySelectorAll('.stars').forEach(starContainer => {
+        const rating = parseFloat(starContainer.dataset.rating);
+        const fullStars = Math.floor(rating);
+        const halfStar = rating % 1 >= 0.5;
+        let starsHtml = '';
+        for(let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+                starsHtml += '★';
+            } else if (i === fullStars && halfStar) {
+                starsHtml += '✭'; // Or another half-star symbol if you have one
+            } else {
+                starsHtml += '☆';
+            }
         }
+        starContainer.textContent = starsHtml;
     });
-});
 
-// Add click sound effect (visual feedback)
-document.addEventListener('click', function(e) {
-    if (e.target.closest('.film-card') || e.target.closest('.watch-btn')) {
-        // Create ripple effect
-        const ripple = document.createElement('div');
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.background = 'rgba(255, 215, 0, 0.6)';
-        ripple.style.transform = 'scale(0)';
-        ripple.style.animation = 'ripple 0.6s linear';
-        ripple.style.left = (e.clientX - 25) + 'px';
-        ripple.style.top = (e.clientY - 25) + 'px';
-        ripple.style.width = '50px';
-        ripple.style.height = '50px';
-        ripple.style.pointerEvents = 'none';
-        ripple.style.zIndex = '9999';
-        
-        document.body.appendChild(ripple);
-        
-        setTimeout(() => {
-            document.body.removeChild(ripple);
-        }, 600);
-    }
-});
-
-// Add CSS for ripple animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
+    // --- COUNT-UP ANIMATION FOR STATS ---
+    const statNumbers = document.querySelectorAll('.stat-number[data-value]');
+    statNumbers.forEach(statNum => {
+        const targetValue = parseInt(statNum.dataset.value);
+        if (isNaN(targetValue)) { // For non-numeric stats like ∞
+            statNum.textContent = statNum.dataset.value || statNum.textContent;
+            return;
         }
-    }
-`;
-document.head.appendChild(style);
+        let currentValue = 0;
+        const duration = 1500; // ms
+        const increment = targetValue / (duration / 20); // Update roughly every 20ms
+
+        function updateCount() {
+            currentValue += increment;
+            if (currentValue < targetValue) {
+                statNum.textContent = Math.ceil(currentValue);
+                requestAnimationFrame(updateCount);
+            } else {
+                statNum.textContent = targetValue;
+            }
+        }
+        // Trigger when stats become visible (simple check for now)
+        setTimeout(updateCount, 300); // Delay to ensure page is settled
+    });
+
+    // --- CURRENT YEAR FOR FOOTER ---
+    const yearSpan = document.getElementById('current-year');
+    if(yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+});
