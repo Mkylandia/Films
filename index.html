@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAIKFILMS - Ultimate Premium Film Collection</title>
+    <title>MAIKFILMS - Premium Film Collection</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-vfx">
-        <div class="star-field"></div>
-        <div class="aurora-effect"></div>
+    <div class="background-animation">
         <div class="floating-element"></div>
         <div class="floating-element"></div>
         <div class="floating-element"></div>
@@ -21,159 +19,130 @@
     </div>
 
     <div class="grid-overlay"></div>
-    <div id="cursor-light"></div>
 
     <div class="container">
-        <header class="header">
+        <div class="header">
             <div class="logo-container">
                 <h1 class="logo">MAIKFILMS</h1>
                 <div class="logo-underline"></div>
             </div>
-            <p class="tagline">Die Ultimative Kinoerfahrung • Exklusive Kollektion</p>
+            <p class="tagline">Premium Cinema Experience • Exclusive Collection</p>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-number" data-value="6">0</span>
-                    <span class="stat-label">Meisterwerke</span>
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Films</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">8K</span>
-                    <span class="stat-label">Ultra HD Qualität</span>
+                    <span class="stat-number">4K</span>
+                    <span class="stat-label">Quality</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">∞</span
-                    ><span class="stat-label">Grenzenloses Entertainment</span>
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Entertainment</span>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <main class="film-grid">
-            <article class="film-card premium" onclick="openFilm('https://kinogo-films.fm/895-meg-monstr-glubiny.html')">
-                <div class="card-shine-layer"></div>
-                <div class="card-glow-orb"></div>
+        <div class="film-grid">
+            <div class="film-card premium" onclick="openFilm('https://kinogo-films.fm/895-meg-monstr-glubiny.html')">
+                <div class="card-glow"></div>
                 <div class="film-poster shark">
-                    <div class="poster-vfx"></div>
                     <div class="poster-overlay">
-                        <div class="play-icon-container">
-                            <svg class="play-icon" viewBox="0 0 100 100" fill="currentColor"><polygon points="30,20 30,80 80,50"></polygon></svg>
-                        </div>
+                        <div class="play-icon">▶</div>
                     </div>
                     <div class="poster-bg">🦈🌊</div>
                 </div>
                 <div class="film-info">
                     <h3>Мег 2: Бездна</h3>
-                    <p class="genre">Action • Abenteuer • Horror</p>
+                    <p class="genre">Action • Adventure • Horror</p>
                     <p class="description">Джейсон Стэйтем возвращается, чтобы сразиться с древними хищниками в еще более опасных глубинах океана.</p>
                     <div class="rating">
-                        <span class="stars" data-rating="4.5">★★★★☆</span>
+                        <span class="stars">★★★★☆</span>
                         <span class="score">7.5</span>
                     </div>
                 </div>
                 <button class="watch-btn">
-                    <span class="btn-text">Ansehen</span>
-                    <span class="btn-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
                 </button>
-            </article>
+            </div>
 
-            <article class="film-card premium" onclick="openFilm('https://kinogo-films.fm/690-matrica-perezagruzka.html')">
-                <div class="card-shine-layer"></div>
-                <div class="card-glow-orb"></div>
+            <div class="film-card premium" onclick="openFilm('https://kinogo-films.fm/690-matrica-perezagruzka.html')">
+                <div class="card-glow"></div>
                 <div class="film-poster matrix">
-                    <div class="poster-vfx"></div>
                     <div class="poster-overlay">
-                         <div class="play-icon-container">
-                            <svg class="play-icon" viewBox="0 0 100 100" fill="currentColor"><polygon points="30,20 30,80 80,50"></polygon></svg>
-                        </div>
+                        <div class="play-icon">▶</div>
                     </div>
                     <div class="poster-bg">💊🔄</div>
                 </div>
                 <div class="film-info">
                     <h3>Матрица: Перезагрузка</h3>
-                    <p class="genre">Sci-Fi • Action • Philosophie</p>
+                    <p class="genre">Sci-Fi • Action • Philosophy</p>
                     <p class="description">Нео продолжает свой путь Избранного в мире, где реальность и иллюзия сплетаются воедино.</p>
                     <div class="rating">
-                        <span class="stars" data-rating="5">★★★★★</span>
+                        <span class="stars">★★★★★</span>
                         <span class="score">8.7</span>
                     </div>
                 </div>
                 <button class="watch-btn">
-                     <span class="btn-text">Ansehen</span>
-                    <span class="btn-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
                 </button>
-            </article>
+            </div>
 
-            <article class="film-card low-quality" onclick="openFilm('https://kinogo-films.fm/9835-gromoverzhcy.html')">
-                <div class="card-shine-layer"></div>
-                <div class="card-glow-orb"></div>
-                <div class="quality-badge">⚠️ NIEDRIGE QUALITÄT</div>
+            <div class="film-card low-quality" onclick="openFilm('https://kinogo-films.fm/9835-gromoverzhcy.html')">
+                <div class="card-glow"></div>
+                <div class="quality-badge">⚠️ LOW QUALITY</div>
                 <div class="film-poster thunder">
-                    <div class="poster-vfx"></div>
                     <div class="poster-overlay">
-                         <div class="play-icon-container">
-                            <svg class="play-icon" viewBox="0 0 100 100" fill="currentColor"><polygon points="30,20 30,80 80,50"></polygon></svg>
-                        </div>
+                        <div class="play-icon">▶</div>
                     </div>
                     <div class="poster-bg">⚡</div>
                 </div>
                 <div class="film-info">
                     <h3>Громовержцы</h3>
-                    <p class="genre">Action • Superhelden • Fantasy</p>
+                    <p class="genre">Action • Superhero • Fantasy</p>
                     <p class="description">Супергеройский боевик с впечатляющими спецэффектами и захватывающими битвами между добром и злом.</p>
                     <div class="rating">
-                        <span class="stars" data-rating="3">★★★☆☆</span>
+                        <span class="stars">★★★☆☆</span>
                         <span class="score">6.4</span>
                     </div>
                 </div>
                 <button class="watch-btn">
-                     <span class="btn-text">Ansehen</span>
-                    <span class="btn-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
                 </button>
-            </article>
+            </div>
 
-            <article class="film-card recommended" onclick="openFilm('https://kinogo-films.fm/7319-krushenie-mira.html')">
-                <div class="card-shine-layer"></div>
-                <div class="card-glow-orb"></div>
-                <div class="quality-badge recommended">👍 EMPFEHLUNG</div>
+            <div class="film-card recommended" onclick="openFilm('https://kinogo-films.fm/7319-krushenie-mira.html')">
+                <div class="card-glow"></div>
+                <div class="quality-badge recommended">👍 RECOMMENDED</div>
                 <div class="film-poster apocalypse">
-                    <div class="poster-vfx"></div>
                     <div class="poster-overlay">
-                        <div class="play-icon-container">
-                            <svg class="play-icon" viewBox="0 0 100 100" fill="currentColor"><polygon points="30,20 30,80 80,50"></polygon></svg>
-                        </div>
+                        <div class="play-icon">▶</div>
                     </div>
                     <div class="poster-bg">🌍💥</div>
                 </div>
                 <div class="film-info">
                     <h3>Крушение мира</h3>
-                    <p class="genre">Thriller • Apokalypse • Drama</p>
+                    <p class="genre">Thriller • Apocalypse • Drama</p>
                     <p class="description">Апокалиптический триллер о конце света, где человечество борется за выживание в разрушающемся мире.</p>
                     <div class="rating">
-                        <span class="stars" data-rating="4">★★★★☆</span>
+                        <span class="stars">★★★★☆</span>
                         <span class="score">8.1</span>
                     </div>
                 </div>
                 <button class="watch-btn">
-                     <span class="btn-text">Ansehen</span>
-                    <span class="btn-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
                 </button>
-            </article>
+            </div>
 
-            <article class="film-card premium" onclick="openFilm('https://gidonline.eu/1740-adrenalin.html')">
-                <div class="card-shine-layer"></div>
-                <div class="card-glow-orb"></div>
+            <div class="film-card premium" onclick="openFilm('https://gidonline.eu/1740-adrenalin.html')">
+                <div class="card-glow"></div>
                 <div class="film-poster adrenaline">
-                    <div class="poster-vfx"></div>
                     <div class="poster-overlay">
-                        <div class="play-icon-container">
-                            <svg class="play-icon" viewBox="0 0 100 100" fill="currentColor"><polygon points="30,20 30,80 80,50"></polygon></svg>
-                        </div>
+                        <div class="play-icon">▶</div>
                     </div>
                     <div class="poster-bg">💉⚡</div>
                 </div>
@@ -182,29 +151,50 @@
                     <p class="genre">Action • Thriller • Crime</p>
                     <p class="description">Экстремальный боевик с Джейсоном Стэйтемом, где каждая секунда на счету и адреналин зашкаливает.</p>
                     <div class="rating">
-                        <span class="stars" data-rating="4.2">★★★★☆</span>
+                        <span class="stars">★★★★☆</span>
                         <span class="score">7.9</span>
                     </div>
                 </div>
                 <button class="watch-btn">
-                    <span class="btn-text">Ansehen</span>
-                    <span class="btn-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </span>
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
                 </button>
-            </article>
-        </main>
+            </div>
 
-        <footer class="footer">
+            <div class="film-card premium" onclick="openFilm('https://kinogo-films.fm/895-meg-monstr-glubiny.html')">
+                <div class="card-glow"></div>
+                <div class="film-poster shark">
+                    <div class="poster-overlay">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="poster-bg">🦈🌊</div>
+                </div>
+                <div class="film-info">
+                    <h3>Мег: Монстр глубины</h3>
+                    <p class="genre">Action • Thriller • Sci-Fi</p>
+                    <p class="description">Мегалодон возвращается из глубин океана, чтобы устроить настоящий кошмар для человечества в этом захватывающем подводном триллере.</p>
+                    <div class="rating">
+                        <span class="stars">★★★★☆</span>
+                        <span class="score">7.8</span>
+                    </div>
+                </div>
+                <button class="watch-btn">
+                    <span class="btn-text">Смотреть</span>
+                    <span class="btn-icon">→</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
             <div class="footer-content">
-                <p>&copy; <span id="current-year">2025</span> MAIKFILMS • Ultimate Premium Cinema Collection</p>
+                <p>&copy; 2025 MAIKFILMS • Premium Cinema Collection</p>
                 <div class="social-links">
-                    <a href="#" class="social-icon" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.58c-.2K19 20.08.93c.46.14 1.07.01 1.53-.5l2.81-2.58l4.35 3.2c.84.59 1.48.28 1.69-.78l.28-4.23z"/></svg></a>
-                    <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M10 15l5.19-3L10 9v6m11.56-7.83c.13.47.22 1.1.28 1.9c.07.8.1 1.49.1 2.09L22 12c0 2.19-.16 3.8-.44 4.83c-.25.9-.83 1.48-1.73 1.73c-.47.13-1.33.22-2.65.28c-1.3.07-2.49.1-3.59.1L12 19c-4.19 0-6.8-.16-7.83-.44c-.9-.25-1.48-.83-1.73-1.73c-.13-.47-.22-1.1-.28-1.9c-.07-.8-.1-1.49-.1-2.09L2 12c0-2.19.16-3.8.44-4.83c.25-.9.83-1.48 1.73-1.73c.47-.13 1.33.22 2.65.28c1.3.07 2.49.1 3.59.1L12 5c4.19 0 6.8.16 7.83.44c.9.25 1.48.83 1.73 1.73z"/></svg></a>
-                    <a href="#" class="social-icon" aria-label="Star"><svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 .587l3.668 7.568L24 9.748l-6 5.845L19.335 24 12 19.925L4.665 24 6 15.593l-6-5.845l7.332-1.593z"/></svg></a>
+                    <span class="social-icon">📱</span>
+                    <span class="social-icon">🎬</span>
+                    <span class="social-icon">⭐</span>
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
 
     <script src="script.js"></script>
