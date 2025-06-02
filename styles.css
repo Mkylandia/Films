@@ -522,6 +522,34 @@ body {
     background: radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.4) 0%, transparent 50%);
 }
 
+.beekeeper { 
+    background: linear-gradient(135deg, #ffd700 0%, #ffb347 50%, #000000 100%);
+    position: relative;
+}
+.beekeeper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 60% 30%, rgba(0, 0, 0, 0.4) 0%, transparent 60%);
+}
+
+.high-voltage { 
+    background: linear-gradient(135deg, #FF0000 0%, #FF4500 50%, #8B0000 100%);
+    position: relative;
+}
+.high-voltage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(255, 100, 0, 0.4) 0%, transparent 70%);
+}
+
 /* Enhanced film info */
 .film-info {
     padding: 30px;
